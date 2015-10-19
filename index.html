@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="main">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="//code.angularjs.org/1.2.10/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="iodash.js"></script>
+    <script src="angular-maps.js"></script>
+    <script src="app.js"></script>
+    
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <!-- let's complicat things a bit -->
+    <!-- we want 2 modules each with their own set of controllers -->
+
+  <div class="row" ng-controller="MapCtrl">
+    <br />
+   
+    <br />
+    <div class="col-md-6">
+      <ui-gmap-google-map center="map.center" 
+      zoom="map.zoom" draggable="true" 
+      bounds="map.bounds" control="map.control" 
+      options="map.options">
+        
+        <ui-gmap-markers models="map.randomMarkers" 
+        coords="'self'" 
+        icon="'icon'" events='events' 
+        click="'onClick'" docluster="true" 
+        clusteroptions="map.clusterOptions" fit="false" 
+        dorebuildall="false" 
+        options="'options'">
+          
+          <ui-gmap-windows show="'showWindow'" 
+          boxClass="custom-info-window" 
+          closeclick="'closeClick'" 
+          options="map.infoWindowWithCustomClass.options" ng-cloak>
+
+            <span style="width:200px;height:100px;">
+                            Window with additional information
+            <span><br /><br /><br /><br />Testing Testing<br /></span>
+            </span>
+          </ui-gmap-windows>
+        
+          
+        </ui-gmap-markers>
+
+      </ui-gmap-google-map>
+    </div>
+
+  </div>
+
+
+    <div ng-view=""></div>
+  </body>
+
+</html>
